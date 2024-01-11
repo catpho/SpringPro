@@ -1,0 +1,231 @@
+$(document).ready(function(){
+
+	getCharacters();
+	getCharacters2();
+	getPairings();
+});
+//Client side API call using AJAx
+function getCharacters(){
+	
+	$.ajax({
+		url: "./webapi/characters",
+		type: 'GET',
+		dataType : "json",
+        contentType: "application/json",
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+
+    	$.each(response, function(key, value) {
+    		
+    		var lstResults = "<tr><td>"+value.name+"</td><td>"+value.fandom+"</td><td>"+value.title+"</td>" +
+    		"<td><a href = '#' onclick=editCharacter('"+value.id+"') data-toggles= 'tooltip' title='Delete'>Edit</a></td>"+
+    		"<td><a href = '#' onclick=deleteCharacter('"+value.id+"') data-toggles= 'tooltip' title='Delete'>Delete</a></td></tr>";
+       		
+       		if($("#postBody").text()){
+    		document.getElementById('postBody').innerHTML += lstResults;
+    		}
+    	});
+	});
+}
+function getCharacters2(){
+	
+	$.ajax({
+		url: "./webapi/characters",
+		type: 'GET',
+		dataType : "json",
+        contentType: "application/json",
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+
+    	$.each(response, function(key, value) {
+    		
+    		var lstResults = "<tr><td>"+value.name+"</td><td>"+value.fandom+"</td><td>"+value.title+"</td>";
+       		
+       		if($("#postBody2").text()){
+    		document.getElementById('postBody2').innerHTML += lstResults;
+    		}
+    	});
+	});
+}
+function getPairings(){
+	
+	$.ajax({
+		url: "./webapi/pairs",
+		type: 'GET',
+		dataType : "json",
+        contentType: "application/json",
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+
+    	$.each(response, function(key, value) {
+    		
+    		var lstResults = "<tr><td>"+value.first+"</td><td>"+value.second+"</td><td>"+value.pairname+"</td>" +
+    		"<td>"+value.story+"</td>" +
+    		"<td><a href = '#' onclick=deletePair('"+value.id+"') data-toggles= 'tooltip' title='Delete'>Delete</a></td></tr>";
+       		
+       		if($("#postPair").text()){
+    		document.getElementById('postPair').innerHTML += lstResults;
+    		}
+    	});
+	});
+}
+
+function addCharacters(){
+	
+	var characterName = $("#characterName").val();
+	var characterFandom= $("#characterFandom").val();
+	var characterTitle = $("#characterTitle").val();
+	
+	if(characterName == ""){
+		alert("Character Name cannot be blank");
+		$("#characterName").focus();
+		return;
+	}
+	if(characterFandom == ""){
+		alert("Character Fandom cannot be blank");
+		$("#characterFandom").focus();
+		return;
+	}
+	if(characterTitle == ""){
+		alert("Character Title cannot be blank");
+		$("#characterTitle").focus();
+		return;
+	}
+	
+	var parms = {name:characterName, fandom: characterFandom, title:characterTitle};
+	
+	$.ajax({
+	url: "./webapi/characters",
+	type: 'POST',
+    contentType: "application/json",
+    data: JSON.stringify(parms)
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+	
+		window.location= "./index.html";
+	});
+}
+
+function deleteCharacter(id){
+	$.ajax({
+	url: "./webapi/characters/"+id,
+	type: 'DELETE',
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+	
+		window.location= "./index.html";
+	});
+}
+
+function editCharacter(id){
+	
+	$("#editModal").modal('show');
+	
+	$.ajax({
+	url: "./webapi/characters/"+id,
+	type: 'GET',
+	contentType: "application/json",
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+		console.log("Get Error");
+
+    }).done(function(response){
+		console.log(response);
+		$("#characterID").val(response.id);
+		$("#characterName").val(response.name);
+		$("#characterFandom").val(response.fandom);
+		$("#characterTitle").val(response.title);
+	});
+}
+function updateCharacter(){
+	
+	var characterName = $("#characterName").val();
+	var characterFandom= $("#characterFandom").val();
+	var characterTitle = $("#characterTitle").val();
+	var characterID = $("#characterID").val();
+	
+	
+	var parms = { id:characterID ,name:characterName, fandom: characterFandom, title:characterTitle};
+	
+	$.ajax({
+	url: "./webapi/characters/"+characterID,
+	type: 'PUT',
+    contentType: "application/json",
+    data: JSON.stringify(parms)
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+	
+		window.location= "./index.html";
+	});
+}
+function addPair(){
+	
+	var first = $("#first").val();
+	var second= $("#second").val();
+	var pairname = $("#pairname").val();
+	var story = $("#story").val();
+	
+	if(first == ""){
+		alert("Input needed for first character!");
+		$("#first").focus();
+		return;
+	}
+	if(second == ""){
+		alert("Input needed for second character!");
+		$("#second").focus();
+		return;
+	}
+	if(pairname == ""){
+		alert("No name for your pair!? Try Again!");
+		$("#pairname").focus();
+		return;
+	}
+	if(story == ""){
+		alert("No story? Very sad!");
+		$("#story").focus();
+		return;
+	}
+	
+	var parms = {first:first, second: second, pairname:pairname, story:story};
+	
+	$.ajax({
+	url: "./webapi/pairs",
+	type: 'POST',
+    contentType: "application/json",
+    data: JSON.stringify(parms)
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+	
+		window.location= "./pairindex.html";
+	});
+}
+
+function deletePair(id){
+	$.ajax({
+	url: "./webapi/pairs/"+id,
+	type: 'DELETE',
+	}).fail(function(response) {
+		console.log(JSON.stringify(response));
+
+    }).done(function(response){
+	
+		window.location= "./index.html";
+	});
+}
+
+
+

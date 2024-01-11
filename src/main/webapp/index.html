@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>OTP Pairs: Your DIY stories with characters you love!</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+  
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+						<a>OTP Pairs: Your DIY stories with characters you love!</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="./">Home</a></li> 
+                                <li class="nav-item active"><a class="nav-link" href="./addcharacter.html">Add Cast</a></li> 
+                                <li class="nav-item active"><a class="nav-link" href="./pairme.html">Add Lovers</a></li> 
+                                 <li class="nav-item active"><a class="nav-link" href="./pairindex.html">Stories</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                 <div class="container">
+					<div class="text-center mt-5">
+					<h1>Characters List</h1>
+				    <table>
+				    	<tbody id="postBody">
+				    		<tr>
+				    			<th>Name</th>
+				    			<th>Fandom</th>
+				    			<th>Title</th>
+				    			<th></th>
+				    			<th></th>
+				    		</tr>
+				    	</tbody>
+				    </table>
+			        </div>
+			        <div id="editModal" class="modal fade" tabindex="-1">
+			        	<div class="modal-dialog">
+			        		<div class="modal-content">
+			        			<div class="modal-header">
+			        				<h5 class="modal-title">Edit Character</h5>
+			        				<button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+			        			</div>
+			        			<div class="modal-body">
+			        				<div class="form-group col-lg-6 col-centered">
+									    <label for="characterID">ID</label>
+									    <input type="text" class="form-control" id="characterID" readonly>
+									</div>
+			        				<div class="form-group col-lg-6 col-centered">
+									    <label for="characterName">Name</label>
+									    <input type="text" class="form-control" id="characterName">
+									</div>
+									<div class="form-group col-lg-6 col-centered">
+									    <label for="characterFandom">Fandom</label>
+									    <input type="text" class="form-control" id="characterFandom">
+									</div>
+									<div class="form-group col-lg-6 col-centered">
+									    <label for="characterTitle">Title</label>
+									    <input type="text" class="form-control" id="characterTitle">
+									</div>
+			        			</div>
+			        			<div class="modal-footer">
+			        				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+			        				<button class="btn btn-primary" type="submit" onclick="updateCharacter()" id="characterUpdate" data-toggle="tooltip" title="Update Character">Update Character</button>
+			        			</div>
+			        		</div>
+			            </div>
+			        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="js/scripts3"></script>
+         
+    </body>
+</html>

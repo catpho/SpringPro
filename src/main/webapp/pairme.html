@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Our Shared Link</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+        
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <a>OTP Pairs: Your DIY stories with characters you love!</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="./">Home</a></li> 
+                                <li class="nav-item active"><a class="nav-link" href="./addcharacter.html">Add Cast</a></li> 
+                                <li class="nav-item active"><a class="nav-link" href="./pairme.html">Add Lovers</a></li> 
+                                <li class="nav-item active"><a class="nav-link" href="./pairindex.html">Stories</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                  <div class="container">
+					<div class="text-center mt-5">
+			               <h1>Add Pairing</h1>
+						   <div class="form-group col-lg-3 col-centered">
+							    <label for="first">Name 1</label>
+							     <input type="text" class="form-control" id="first" required >
+							</div>
+							<div class="form-group col-lg-3 col-centered">
+							    <label for="second">Name 2</label>
+							     <input type="text" class="form-control" id="second" required >
+							</div>
+							<div class="form-group col-lg-3 col-centered">
+							    <label for="pairname">Pair Name</label>
+							    <input type="text" class="form-control" id="pairname" required >
+							</div>
+							<div class="form-group col-lg-3 col-centered">
+							    <label for="story">Story</label>
+							    <input type="text" class="form-control" id="story" required >
+							</div>
+							<div class="form-group">
+							 <span>
+								    <!-- ADD BUTTON HERE TO DO SCRIPT WHEN BUTTON IS CLICKED-->
+							     <button class="btn btn-primary" type="submit"  id="characterBond" onclick= "addPair()" data-toggle="tooltip" title="Add Pair">Add Pairing</button>
+							 </span>
+							 <span>
+							     <button class = "btn btn-secondary" type="button" onclick="window.history.back()" data-toggle="tooltip" title="Cancel">Cancel</button>
+							   </span>
+							</div>
+			            </div>  
+            		</div>
+            		<div class="container">
+					<div class="text-center mt-5">
+					<h1>Characters List</h1>
+				    <table>
+				    	<tbody id="postBody2">
+				    		<tr>
+				    			<th>Name</th>
+				    			<th>Fandom</th>
+				    			<th>Title</th>
+				    		</tr>
+				    	</tbody>
+				    </table>
+			        </div>
+			        		</div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+         <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="js/scripts3"></script>
+        
+</html>
